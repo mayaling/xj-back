@@ -14,6 +14,14 @@
                     　　　　<img :src="scope.row.pic" width="40" height="40" class="head_pic"/>
                     　　</template>
                     </el-table-column>
+                    <el-table-column prop="info_view" label="详情页展示" align="center">
+                        <template slot-scope="scope">
+                            <span  @click="handleStatus(scope.$index,scope.row)" style="width: 40px;height: 40px;">
+                                <i v-if="scope.row.info_view" class="el-icon-check"></i>
+                                <i v-if="!scope.row.info_view" class="el-icon-close"></i>
+                            </span>
+                        </template>
+                </el-table-column>
                 <el-table-column label="操作" align="center">
                     <template slot-scope="scope">
                         <router-link :to="{path:'editinteresttype',query:{id:scope.row.id}}">
@@ -104,6 +112,24 @@
                         this.$message.error('数据加载失败');
                     }
                     this.loading = false
+                }).catch(() => {
+                    this.loading = false
+                })
+            },
+            handleStatus(index,row){
+                row.info_view = !row.info_view;
+                if(row.info_view == false){
+                    row.info_view = 0
+                }else{
+                    row.info_view = 1
+                }
+                this.$put('interest-types/'+row.id, {
+                    info_view: row.info_view,
+                }).then((res) => {
+                    this.loading = false
+                    // this.search1()
+                    // this.handleEdit()
+                    // this.getlistdata()
                 }).catch(() => {
                     this.loading = false
                 })
