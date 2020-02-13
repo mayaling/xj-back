@@ -5,9 +5,9 @@ axios.defaults.timeout = 15000;
 axios.defaults.baseURL = '';
 
 
-var URL = "http://47.103.61.179:1081/";
+//var URL = "http://47.103.61.179:1081/";
 
-// var URL = "http://service.xykj1.com/";
+ var URL = "http://service.xykj1.com/";
 
 
 

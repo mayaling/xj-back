@@ -158,7 +158,7 @@
                         this.$post('interests', {
                             pic:this.imageurl1?this.imageurl1:this.tableData.pic,
                             name:this.form.name,
-                            type:this.form.type
+                            t_id:this.form.type
                         }).then((res) => {
                             console.log(res)
                             if(res.code === 1){
@@ -190,6 +190,7 @@
                         this.$put('interests/'+this.id, {
                             pic:this.imageurl1?this.imageurl1:this.tableData.pic,
                             name:this.form.name,
+                            t_id:this.form.type
                         }).then((res) => {
                             if(res.code === 1){
                                 this.$message({
